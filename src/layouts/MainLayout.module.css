@@ -1,0 +1,8 @@
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainContent {
+    padding: 50px;
+}

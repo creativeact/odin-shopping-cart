@@ -1,0 +1,17 @@
+.navBar {
+    background-color: violet;
+}
+
+.navBarBrand {
+    max-width: 100px;
+}
+
+.navBarLinks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.link:hover {
+    cursor: pointer;
+    color: red;
+}
