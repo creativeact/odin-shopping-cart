@@ -4,5 +4,11 @@
 }
 
 .mainContent {
-    padding: 50px;
+    padding: 25px 50px 25px 50px;
+}
+
+.footer {
+    background-color: var(--primary-color);
+    height: 100px;
+    width: 100%;
 }

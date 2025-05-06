@@ -1,0 +1,21 @@
+:root {
+    --primary-color: rgb(91, 159, 125);
+    --secondary-color: rgb(76, 105, 99);
+    --backround-color: rgb(240, 242, 243);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka';
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}

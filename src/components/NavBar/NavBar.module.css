@@ -1,17 +1,50 @@
 .navBar {
-    background-color: violet;
-}
-
-.navBarBrand {
-    max-width: 100px;
-}
-
-.navBarLinks {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
 }
 
 .link:hover {
     cursor: pointer;
-    color: red;
+    text-decoration: underline;
 }
+
+.link:visited {
+    text-decoration: none;
+}
+
+.navLogo {
+    width: 125px;
+    height: 125px;
+}
+
+.navBarMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 35px 0px 35px;
+    background-color: var(--primary-color);
+}
+
+.navBarMainLinks {
+    display: flex;
+    justify-content: end;
+    gap: 10rem;
+    font-size: 1.5rem;
+}
+
+.navBarSecondary {
+    background-color: var(--secondary-color);
+}
+
+.navBarSecondaryLinks {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    font-size: 1.15rem;
+}
+
