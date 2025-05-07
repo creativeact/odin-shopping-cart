@@ -1,13 +1,12 @@
 async function fetchProducts() {
-    try {
-      const response = await fetch(
-        "https://dummyjson.com/products/category/tops",
-      );
-      const data = await response.json();
-      return data.products;
-    } catch (err) {
-    console.error("Error retrieving products", err);
-    }
-};
+  const response = await fetch("https://dummyjson.com/products?limit=0");
 
-export { fetchProducts }
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data.products;
+}
+
+export { fetchProducts };

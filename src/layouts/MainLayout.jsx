@@ -9,9 +9,7 @@ function MainLayout() {
       <main className={styles.mainContent}>
         <Outlet />
       </main>
-      <div className={styles.footer}>
-      
-      </div>
+      <div className={styles.footer}></div>
     </div>
   );
 }

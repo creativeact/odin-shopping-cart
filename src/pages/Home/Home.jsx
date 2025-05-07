@@ -5,7 +5,6 @@ import { ProductContext } from '../../context/ProductContext.jsx'
 
 const DealsCarousel = () => {
     const products = useContext(ProductContext);
-    console.log('Raw products in context', products);
 
     const featuredDeals = products.slice(0,3);
 

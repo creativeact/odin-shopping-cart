@@ -7,15 +7,25 @@ import routes from './routes.jsx';
 
 function App() {
   const [products, setProducts] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     async function loadProducts() {
-      const productData = await fetchProducts();
-      setProducts(productData);
-    }
+
+      try {
+        const fetchedProducts = await fetchProducts();
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error loading products:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
       loadProducts();
   }, []);
 
@@ -41,8 +51,17 @@ function App() {
     handleSearch
   };
 
-  if (!products) {
+  if (loading) {
     return <div>Loading products...</div>
+  }
+
+  if (error) {
+    return (
+      <>
+        <h2>Error loadign store data</h2>
+        <p>{error}</p>
+      </>
+    )
   }
 
   const router = createBrowserRouter(routes(products));

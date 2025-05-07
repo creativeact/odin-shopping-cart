@@ -5,6 +5,16 @@ import styles from './NavBar.module.css';
 import Logo from '../../assets/BigOStore_Logo.png';
 
 function NavBar() {
+
+const productCategories = [
+   { name: 'Clothing', path: '/category/clothing' },
+   { name: 'Home & Kitchen', path: '/category/home-kitchen' },
+   { name: 'Groceries', path: '/category/groceries' },
+   { name: 'Health & Beauty', path: '/category/health-beauty' },
+   { name: 'Electronics', path: '/category/electronics' },
+   { name: 'Vehicles', path: '/category/vehicles' }
+];
+
  return (
     <div className={styles.navBar}>
        <nav className={styles.navBarMain}>
@@ -19,13 +29,14 @@ function NavBar() {
        </nav>
        <nav className={styles.navBarSecondary}>
          <ul className={styles.navBarSecondaryLinks}>
-            <li><Link className={styles.link} to='/clothing'>Clothing</Link></li>
-            <li><Link className={styles.link} to='/clothing'>Home & Kitchen</Link></li>
-            <li><Link className={styles.link} to='/clothing'>Groceries</Link></li>
-            <li><Link className={styles.link} to='/clothing'>Health & Beauty</Link></li>
-            <li><Link className={styles.link} to='/clothing'>Electronics</Link></li>
-            <li><Link className={styles.link} to='/clothing'>Vehicles</Link></li>
-         </ul>
+            {productCategories.map((category, index) => (
+            <li key={index}>
+               <Link className={styles.link} to={category.path}>
+                  {category.name}
+               </Link>
+            </li>
+            ))}
+        </ul>
        </nav>
     </div>
  )   

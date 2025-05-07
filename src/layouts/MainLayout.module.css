@@ -1,14 +1,16 @@
 .layoutContainer {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 .mainContent {
     padding: 25px 50px 25px 50px;
+    flex-grow: 1;
 }
 
 .footer {
     background-color: var(--primary-color);
-    height: 100px;
+    height: 75px;
     width: 100%;
 }
