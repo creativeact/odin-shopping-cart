@@ -1,0 +1,144 @@
+.productContainer {
+    margin: 10px 40px 0px 40px;
+    display: grid;
+    grid-template-columns: 500px auto;
+    gap: 50px;
+}
+
+.imageContainer {
+    grid-column: 1 / 2;
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    background-color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.productImage {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.productDetails {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 1.5rem 0 1.5rem;
+}
+
+.productRating {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.priceAvailabilityContainer {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.productPrice {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.productAvailability {
+    font-size: 1.1rem;
+}
+
+.low {
+    color: red;
+}
+
+.productDescription {
+    margin-bottom: 1rem;
+}
+
+.addProductContainer {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.addToCartButton {
+    background-color: var(--button-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: auto;
+    transition: background-color 0.2s;
+    height: 40px;
+    min-width: 200px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.addToCartButton:hover {
+    background-color: var(--button-hover-color);
+}
+
+.quantitySelector, .quantityDisplay, .quantityButton {
+    font-size: 1.5rem;
+}
+
+.quantitySelector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 125px;
+    background-color: white;
+}
+
+.quantityButton {
+    width: 30px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-color);
+    border: none;
+    color: white;
+    border-radius: 4px;
+}
+
+.quantityButton:hover {
+    cursor: pointer;
+    background-color: var(--button-hover-color);
+}
+
+.reviewsHeader {
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.reviewsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.user, .comment {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}

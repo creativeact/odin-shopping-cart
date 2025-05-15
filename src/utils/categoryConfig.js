@@ -14,7 +14,7 @@ const categoryConfig = {
         },
         'health-beauty': {
             displayName: 'Health & Beauty',
-            apiCategories: ['beauty', 'fragrance', 'skin-care', 'sports-accesories', 'sunglasses']
+            apiCategories: ['beauty', 'fragrances', 'skin-care', 'sports-accessories', 'sunglasses']
         },
         'electronics': {
             displayName: 'Electronics',

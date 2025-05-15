@@ -1,12 +1,26 @@
-function ProductCard({ image, title, price, description, category }) {
+import { Link } from 'react-router-dom';
+import { slugify } from '../../utils/slugify.js';
+import styles from './ProductCard.module.css';
+
+function ProductCard({ product }) {
+    const slug = slugify(product.title || product.name);
+
     return (
-        <div className="product-card">
-            <img src={image} alt={title} />
-            <h2>{title}</h2>
-            <p>{category}</p>
-            <p>{description}</p>
-            <p>${price}</p>
-        </div>
+        <Link to={`/product/${slug}`}>
+            <div key={product.id} className={styles.productCard}>
+                <img
+                    src={product.thumbnail}
+                    alt={product.title || product.name}
+                    className={styles.productImage}
+                 />
+                <h3 className={styles.productTitle}>
+                    {product.title || product.name}
+                </h3>
+                <p className={styles.price}>
+                    ${product.price}
+                </p>
+            </div>
+        </Link>
     )
 }
 

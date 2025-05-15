@@ -1,41 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ProductContext } from '../../context/ProductContext.jsx';
 import { useParams } from 'react-router-dom';
 import styles from './CategoryPage.module.css';
 import { categoryConfig } from '../../utils/categoryConfig.js';
-
-function CategoryPage({ products = [] }) {
+import { ProductCard } from '../../components/ProductCard/ProductCard.jsx';
+ 
+function CategoryPage() {
   const { categoryName } = useParams();
   const [activeSubCategory, setActiveSubCategory] = useState('all');
-  
+  const products = useContext(ProductContext);
+
+  useEffect(() => {
+    // Reset active subcategory to all when user clicks on new category page
+    setActiveSubCategory('all');
+  }, [categoryName]);
+
+  if (!products) {
+    return <div className={styles.loading}>Loading products...</div>;
+  }
   const displayName = categoryConfig.getDisplayName(categoryName);
   const apiCategories = categoryConfig.getApiCategories(categoryName);
-  console.log('Api Categories:', apiCategories);
-  
-  let filteredProducts = [];
 
-  if (products && products.length > 0) {
-    const categoryProducts = products.filter(product =>
-      apiCategories.includes(product.category)
-    );
-  
-    if (activeSubCategory !== 'all') {
-      filteredProducts = categoryProducts.filter(product =>
-        product.category === activeSubCategory
-      );
-    } else {
-      filteredProducts = categoryProducts;
-    }
-  }
+  const categoryProducts = products.filter(product =>
+    apiCategories.includes(product.category)
+  );
 
-  // Handle clicking on a subcategory tile
+  // Valid & resolved subcategory logic prevents UI flashing on category page change
+  const isValidSubCategory = apiCategories.includes(activeSubCategory);
+  const resolvedSubCategory = isValidSubCategory ? activeSubCategory : 'all';
+
+  const filteredProducts =
+    resolvedSubCategory === 'all'
+      ? categoryProducts
+      : categoryProducts.filter(product => product.category === resolvedSubCategory);
+
   const handleSubCategoryClick = (category) => {
     setActiveSubCategory(category === activeSubCategory ? 'all' : category);
   };
-  
-  // If products array is empty, show loading
-  if (!products || products.length === 0) {
-    return <div className={styles.loading}>Loading products...</div>;
-  }
 
   return (
     <div className={styles.categoryPage}>
@@ -70,21 +71,7 @@ function CategoryPage({ products = [] }) {
       ) : (
         <div className={styles.productsGrid}>
           {filteredProducts.map(product => (
-            <div key={product.id} className={styles.productCard}>
-              <img 
-                src={product.thumbnail || product.imageUrl} 
-                alt={product.title || product.name} 
-                className={styles.productImage} 
-              />
-              <h3>{product.title || product.name}</h3>
-              <p className={styles.productPrice}>
-                ${typeof product.price === 'number' ? product.price.toFixed(2) : product.price}
-              </p>
-              <div className={styles.productCategory}>
-                {formatApiCategoryName(product.category)}
-              </div>
-              <button className={styles.addToCartButton}>Add to Cart</button>
-            </div>
+            <ProductCard product={product} />
           ))}
         </div>
       )}

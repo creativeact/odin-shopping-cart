@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Cart } from '../Cart/Cart.jsx'
 import { SearchBar } from '../Searchbar/SearchBar.jsx';
 import styles from './NavBar.module.css';
-import Logo from '../../assets/BigOStore_Logo.png';
+import Logo from '../../assets/BigOStore_Logo_White.png';
 
 function NavBar() {
 
@@ -31,7 +31,7 @@ const productCategories = [
          <ul className={styles.navBarSecondaryLinks}>
             {productCategories.map((category, index) => (
             <li key={index}>
-               <Link className={styles.link} to={category.path}>
+               <Link className={`${styles.link} ${styles.secondaryLink}`} to={category.path}>
                   {category.name}
                </Link>
             </li>

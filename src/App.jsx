@@ -64,7 +64,7 @@ function App() {
     )
   }
 
-  const router = createBrowserRouter(routes(products));
+  const router = createBrowserRouter(routes);
 
   return (
     <ProductContext.Provider value={products}>

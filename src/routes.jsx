@@ -3,8 +3,9 @@ import { Shop } from './pages/Shop/Shop.jsx';
 import { Checkout } from './pages/Checkout/Checkout.jsx';
 import { Home } from './pages/Home/Home.jsx';
 import { CategoryPage } from './pages/CategoryPage/CategoryPage.jsx';
+import { ProductPage } from './pages/ProductPage/ProductPage.jsx';
 
-const routes = (products) => [
+const routes = [
   {
     path: '/',
     element: <MainLayout />,
@@ -15,7 +16,7 @@ const routes = (products) => [
       },
       {
         path: 'shop',
-        element: <Shop products={products} />,
+        element: <Shop />,
       },
       {
         path: 'checkout',
@@ -23,7 +24,11 @@ const routes = (products) => [
       },
       {
         path: 'category/:categoryName',
-        element: <CategoryPage products={products} />,
+        element: <CategoryPage />,
+      },
+      {
+        path: 'product/:productTitle',
+        element: <ProductPage />,
       }
     ],
   },

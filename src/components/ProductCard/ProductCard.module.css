@@ -1,0 +1,32 @@
+.productCard {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px var(--border-color);
+    background-color: white;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.productCard:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.productImage {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.productPrice {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0.75rem;
+}
+
+.productTitle {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
