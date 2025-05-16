@@ -1,13 +1,9 @@
 /* import { useState } from 'react'; */
 import { ShoppingCart } from 'lucide-react';
+import { useCart } from '../../utils/useCart.js';
 
 function Cart() {
-    const itemCount = 0;
-    /* const [isOpen, setIsOpen] = useState(false);
-
-    const handleCartClick = () => {
-        setIsOpen(!isOpen);
-    } */
+    const { itemCount } = useCart();
 
     return (
         <button>

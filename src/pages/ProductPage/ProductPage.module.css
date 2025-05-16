@@ -8,16 +8,17 @@
 .imageContainer {
     grid-column: 1 / 2;
     border: 1px solid var(--border-color);
-    padding: 1rem;
     background-color: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    height: 500px;
 }
 
 .productImage {
-    height: 400px;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .productDetails {
@@ -44,7 +45,7 @@
 
 .productPrice {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .productAvailability {
@@ -123,6 +124,7 @@
     border-bottom: 2px solid var(--border-color);
     padding-bottom: 0.5rem;
     margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
 .reviewsContainer {

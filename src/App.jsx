@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import { ProductContext } from './context/ProductContext.jsx'
-import { SearchContext } from './context/SearchContext.jsx';
+import { SearchProvider } from './context/SearchContext.jsx';
+import { CartProvider } from './context/CartContext.jsx';
+import { ToastProvider } from './context/ToastContext.jsx';
+import { ToastManager } from './components/Toast/ToastManager.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { fetchProducts } from './utils/fetchProducts.js';
 import routes from './routes.jsx';
@@ -9,9 +12,6 @@ function App() {
   const [products, setProducts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     async function loadProducts() {
@@ -28,28 +28,6 @@ function App() {
     };
       loadProducts();
   }, []);
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-    
-    if (!query.trim() || !products) {
-      setSearchResults([]);
-      return;
-    }
-    
-    const filteredResults = products.filter(product => 
-      product.name.toLowerCase().includes(query.toLowerCase()) ||
-      (product.category && product.category.toLowerCase().includes(query.toLowerCase()))
-    );
-    
-    setSearchResults(filteredResults);
-  };
-
-  const searchContextValue = {
-    searchQuery,
-    searchResults,
-    handleSearch
-  };
 
   if (loading) {
     return <div>Loading products...</div>
@@ -68,14 +46,16 @@ function App() {
 
   return (
     <ProductContext.Provider value={products}>
-      <SearchContext.Provider value={searchContextValue}>
-        <RouterProvider router={router} />
-      </SearchContext.Provider>
+      <SearchProvider products={products}>
+        <ToastProvider>
+          <CartProvider>
+            <ToastManager />
+            <RouterProvider router={router} />
+          </CartProvider>
+        </ToastProvider>
+      </SearchProvider>
     </ProductContext.Provider>
   )
 }
 
 export default App
-
-/* const [cartItems, setCartItems] = useState([]); */
-/* functions to add later: addToCart, removeFromCart, updateQuantity */

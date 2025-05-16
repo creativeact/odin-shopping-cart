@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useContext } from 'react';
+import { useCart } from '../../utils/useCart.js';
+import { useToast } from '../../utils/useToast.js';
 import { ProductContext } from '../../context/ProductContext.jsx';
 import { slugify } from '../../utils/slugify.js';
 import { StarRating } from '../../components/StarRating/StarRating.jsx';
@@ -8,6 +10,8 @@ import styles from './ProductPage.module.css';
 
 function ProductPage() {
     const { productTitle } = useParams();
+    const { addToCart } = useCart();
+    const { addToast } = useToast();
     const [quantity, setQuantity] = useState(1);
 
     const handleIncrease = () => setQuantity(prev => prev + 1);
@@ -57,7 +61,15 @@ function ProductPage() {
                         <button className={styles.quantityButton} onClick={handleIncrease}>+</button>
                     </div>
                     
-                    <button className={styles.addToCartButton}>Add to Cart</button>
+                    <button onClick={() => {
+                        addToCart(product, quantity);
+                        addToast(product, quantity);
+                        console.log('Product Quantity', product.quantity)
+                        }} 
+                        className={styles.addToCartButton}
+                        >
+                        Add to Cart
+                        </button>
                 </div>
 
                 <div className={styles.reviewsSection}>
