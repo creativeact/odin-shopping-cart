@@ -1,20 +1,21 @@
 /* import { useState } from 'react'; */
 import { ShoppingCart } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useCart } from '../../utils/useCart.js';
+import styles from './Cart.module.css';
 
 function Cart() {
     const { itemCount } = useCart();
 
     return (
-        <button>
-            <ShoppingCart />
-             {/* Show item count badge when items exist */}
+        <Link to="/checkout" className={styles.cartContainer}>
+            <ShoppingCart color='white' height='35px' width='35px'/>
             {itemCount > 0 && (
-            <div className="absolute -top-2 -right-2 bg-blue-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+            <div className={styles.itemCountBadge}>
                 {itemCount}
             </div>
         )}
-        </button>
+        </Link>
 
     );
 };
