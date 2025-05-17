@@ -1,0 +1,22 @@
+.footerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+
+.linksContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+}
+
+.address {
+    color: white;
+}

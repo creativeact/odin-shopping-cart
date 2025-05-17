@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom';
+import { Footer } from '../components/Footer/Footer.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
 import styles from './MainLayout.module.css';
 
@@ -9,7 +10,9 @@ function MainLayout() {
       <main className={styles.mainContent}>
         <Outlet />
       </main>
-      <div className={styles.footer}></div>
+      <div className={styles.footer}>
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { ProductContext } from '../../context/ProductContext.jsx'
 const DealsCarousel = () => {
     const products = useContext(ProductContext);
 
-    const featuredDeals = products.slice(0,3);
+    const featuredDeals = products.slice(82,85);
 
     return (
         <Carousel products={featuredDeals} />

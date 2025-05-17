@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+i {
+    font-size: 2rem;
+    color: white;
+}
+
+i:hover {
+    cursor: pointer;
+}
