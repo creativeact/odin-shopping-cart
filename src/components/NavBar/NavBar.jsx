@@ -22,9 +22,6 @@ const productCategories = [
             <img className={styles.navLogo} src={Logo}></img>
          </Link>
          <SearchBar/>
-         <ul className={styles.navBarMainLinks}>
-            <li><Link className={styles.link} to='/shop'>Shop</Link></li>
-         </ul>
          <Cart />
        </nav>
        <nav className={styles.navBarSecondary}>

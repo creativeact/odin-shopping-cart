@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { ProductContext } from '../../context/ProductContext';
 import styles from './Toast.module.css'
 
 function Toast({ product, quantity, onDismiss, autoClose = 2000 }) {

@@ -7,7 +7,6 @@ const CartContext = createContext({
     addToCart: () => {},
     removeFromCart: () => {},
     updateQuantity: () => {},
-    clearCart: () => {},
 }); 
 
 const CartProvider = ({ children }) => {
@@ -47,12 +46,10 @@ const CartProvider = ({ children }) => {
         });
     };
 
-    // Remove item from cart
     const removeFromCart = (productId) => {
         setItems(prevItems => prevItems.filter(item => item.id !== productId));
     };
   
-    // Update item quantity
     const updateQuantity = (productId, newQuantity) => {
         // Don't allow negative quantities
         if (newQuantity <= 0) {
@@ -66,13 +63,7 @@ const CartProvider = ({ children }) => {
         )
         );
     };
-    
-    // Clear the entire cart
-    const clearCart = () => {
-        setItems([]);
-    };
   
-    // Create the context value object
     const cartContextValue = {
         items,
         itemCount,
@@ -80,7 +71,6 @@ const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         updateQuantity,
-        clearCart,
     };
     
     return (

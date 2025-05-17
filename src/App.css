@@ -7,6 +7,8 @@
     --button-color: rgb(34, 139, 140);
     --button-hover-color: rgb(25, 96, 97);
     --star-color: rgb(234, 180, 10);
+    --red: rgb(197, 49, 49);
+    --red-hover: rgb(167, 38, 38);
 }
 
 * {

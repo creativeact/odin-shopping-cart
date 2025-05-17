@@ -6,6 +6,7 @@ import { ProductContext } from '../../context/ProductContext.jsx';
 import { slugify } from '../../utils/slugify.js';
 import { StarRating } from '../../components/StarRating/StarRating.jsx';
 import { CircleUserRound } from 'lucide-react';
+import { formatMoney } from '../../utils/formatMoney.js';
 import styles from './ProductPage.module.css';
 
 function ProductPage() {
@@ -41,7 +42,7 @@ function ProductPage() {
                 </div>
 
                 <div className={styles.priceAvailabilityContainer}>
-                    <p className={styles.productPrice}>${product.price}</p>
+                    <p className={styles.productPrice}>${formatMoney(product.price)}</p>
                     <p 
                         className={`${styles.productAvailability} ${
                             product.availabilityStatus === "Low Stock" ? styles.low : ''

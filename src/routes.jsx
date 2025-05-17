@@ -1,6 +1,5 @@
 import { MainLayout } from './layouts/MainLayout.jsx';
-import { Shop } from './pages/Shop/Shop.jsx';
-import { Checkout } from './pages/Checkout/Checkout.jsx';
+import { CartPage } from './pages/CartPage/CartPage.jsx';
 import { Home } from './pages/Home/Home.jsx';
 import { CategoryPage } from './pages/CategoryPage/CategoryPage.jsx';
 import { ProductPage } from './pages/ProductPage/ProductPage.jsx';
@@ -15,12 +14,8 @@ const routes = [
         element: <Home />,
       },
       {
-        path: 'shop',
-        element: <Shop />,
-      },
-      {
-        path: 'checkout',
-        element: <Checkout />,
+        path: 'cart',
+        element: <CartPage />,
       },
       {
         path: 'category/:categoryName',

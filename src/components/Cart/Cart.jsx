@@ -8,7 +8,7 @@ function Cart() {
     const { itemCount } = useCart();
 
     return (
-        <Link to="/checkout" className={styles.cartContainer}>
+        <Link to="/cart" className={styles.cartContainer}>
             <ShoppingCart color='white' height='35px' width='35px'/>
             {itemCount > 0 && (
             <div className={styles.itemCountBadge}>
