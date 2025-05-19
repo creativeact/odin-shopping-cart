@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import { useCart } from '../../utils/useCart.js';
-import { useToast } from '../../utils/useToast.js';
+import { CartContext } from '../../context/CartContext.jsx';
+import { ToastContext } from '../../context/ToastContext.jsx';
 import { ProductContext } from '../../context/ProductContext.jsx';
 import { slugify } from '../../utils/slugify.js';
 import { StarRating } from '../../components/StarRating/StarRating.jsx';
@@ -11,8 +11,8 @@ import styles from './ProductPage.module.css';
 
 function ProductPage() {
     const { productTitle } = useParams();
-    const { addToCart } = useCart();
-    const { addToast } = useToast();
+    const { addToCart } = useContext(CartContext);
+    const { addToast } = useContext(ToastContext);
     const [quantity, setQuantity] = useState(1);
 
     const handleIncrease = () => setQuantity(prev => prev + 1);

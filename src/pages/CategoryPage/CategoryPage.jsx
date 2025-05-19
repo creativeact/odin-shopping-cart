@@ -71,7 +71,7 @@ function CategoryPage() {
       ) : (
         <div className={styles.productsGrid}>
           {filteredProducts.map(product => (
-            <ProductCard product={product} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}

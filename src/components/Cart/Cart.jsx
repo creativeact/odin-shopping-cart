@@ -1,11 +1,11 @@
-/* import { useState } from 'react'; */
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext.jsx';
 import { ShoppingCart } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useCart } from '../../utils/useCart.js';
 import styles from './Cart.module.css';
 
 function Cart() {
-    const { itemCount } = useCart();
+    const { itemCount } = useContext(CartContext);
 
     return (
         <Link to="/cart" className={styles.cartContainer}>
@@ -16,7 +16,6 @@ function Cart() {
             </div>
         )}
         </Link>
-
     );
 };
 

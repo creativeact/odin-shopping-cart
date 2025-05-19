@@ -1,10 +1,10 @@
-import { useToast } from '../../utils/useToast.js';
+import { useContext } from 'react';
 import { Toast } from './Toast.jsx';
 import styles from './ToastManager.module.css';
+import { ToastContext } from '../../context/ToastContext.jsx';
 
 function ToastManager() {
-    const { toasts, removeToast } = useToast();
-
+    const { toasts, removeToast } = useContext(ToastContext);
     return (
         <div className={styles.toastsContainer}>
             {toasts.map((toast, index) => (

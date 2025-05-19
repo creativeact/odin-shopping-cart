@@ -36,7 +36,7 @@ function App() {
   if (error) {
     return (
       <>
-        <h2>Error loadign store data</h2>
+        <h2>Error loading store data</h2>
         <p>{error}</p>
       </>
     )

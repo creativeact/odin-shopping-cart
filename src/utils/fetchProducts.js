@@ -1,5 +1,6 @@
-async function fetchProducts() {
-  const response = await fetch("https://dummyjson.com/products?limit=0");
+async function fetchProductsByCategory(category) {
+
+  const response = await fetch(`https://dummyjson.com/products/category/${category}`);
 
   if (!response.ok) {
     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -9,4 +10,4 @@ async function fetchProducts() {
   return data.products;
 }
 
-export { fetchProducts };
+export { fetchProductsByCategory };
