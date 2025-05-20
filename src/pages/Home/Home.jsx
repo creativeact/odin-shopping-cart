@@ -1,9 +1,8 @@
 import styles from './Home.module.css';
-import { useContext } from 'react';
 import { Carousel } from '../../components/Carousel/Carousel.jsx';
 import { ProductContext } from '../../context/ProductContext.jsx'
 
-const DealsCarousel = () => {
+/* const DealsCarousel = () => {
     const products = useContext(ProductContext);
 
     const featuredDeals = products.slice(82,85);
@@ -12,14 +11,14 @@ const DealsCarousel = () => {
         <Carousel products={featuredDeals} />
 
     )
-};
+}; */
 
 function Home() {
     return (
         <>
             <div className={styles.deals}>
                 <h2 className={styles.sectionHeader}>Today's Deals</h2>
-                <DealsCarousel />
+                {/* <DealsCarousel /> */}
             </div>
         </>
     );

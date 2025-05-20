@@ -1,14 +1,30 @@
-import { useState, useEffect, useContext } from 'react';
-import { ProductContext } from '../../context/ProductContext.jsx';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './CategoryPage.module.css';
+import { fetchProductsByMetacategory } from '../../utils/fetchProductsByMetacategory.js';
 import { categoryConfig } from '../../utils/categoryConfig.js';
+import { formatApiCategoryName } from '../../utils/formatSubcategoryName.js';
 import { ProductCard } from '../../components/ProductCard/ProductCard.jsx';
  
 function CategoryPage() {
   const { categoryName } = useParams();
   const [activeSubCategory, setActiveSubCategory] = useState('all');
-  const products = useContext(ProductContext);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const result = await fetchProductsByMetacategory(categoryName);
+        setProducts(result);
+      } catch (error) {
+        console.error('Failed to load products', error);
+      }
+    }
+    loadProducts();
+  }, [categoryName])
+
+  const displayName = categoryConfig.getDisplayName(categoryName);
+  const subCategories = categoryConfig.getApiCategories(categoryName);
 
   useEffect(() => {
     // Reset active subcategory to all when user clicks on new category page
@@ -18,21 +34,12 @@ function CategoryPage() {
   if (!products) {
     return <div className={styles.loading}>Loading products...</div>;
   }
-  const displayName = categoryConfig.getDisplayName(categoryName);
-  const apiCategories = categoryConfig.getApiCategories(categoryName);
-
-  const categoryProducts = products.filter(product =>
-    apiCategories.includes(product.category)
-  );
-
-  // Valid & resolved subcategory logic prevents UI flashing on category page change
-  const isValidSubCategory = apiCategories.includes(activeSubCategory);
-  const resolvedSubCategory = isValidSubCategory ? activeSubCategory : 'all';
 
   const filteredProducts =
-    resolvedSubCategory === 'all'
-      ? categoryProducts
-      : categoryProducts.filter(product => product.category === resolvedSubCategory);
+    activeSubCategory === 'all'
+      ? products
+      : products.filter(product => product.category === activeSubCategory)
+      console.log('Filtered Products', filteredProducts);
 
   const handleSubCategoryClick = (category) => {
     setActiveSubCategory(category === activeSubCategory ? 'all' : category);
@@ -42,7 +49,6 @@ function CategoryPage() {
     <div className={styles.categoryPage}>
       <h1>{displayName}</h1>
       
-      {/* Subcategory tiles */}
       <div className={styles.subCategories}>
         <div 
           className={`${styles.subCategoryTile} ${activeSubCategory === 'all' ? styles.active : ''}`}
@@ -50,18 +56,17 @@ function CategoryPage() {
         >
           All
         </div>
-        {apiCategories.map(apiCategory => (
+        {subCategories.map(subCategory => (
           <div 
-            key={apiCategory} 
-            className={`${styles.subCategoryTile} ${activeSubCategory === apiCategory ? styles.active : ''}`}
-            onClick={() => handleSubCategoryClick(apiCategory)}
+            key={subCategory} 
+            className={`${styles.subCategoryTile} ${activeSubCategory === subCategory ? styles.active : ''}`}
+            onClick={() => handleSubCategoryClick(subCategory)}
           >
-            {formatApiCategoryName(apiCategory)}
+            {formatApiCategoryName(subCategory)}
           </div>
         ))}
       </div>
       
-      {/* Product count */}
       <div className={styles.productCount}>
         {filteredProducts.length} {filteredProducts.length === 1 ? 'product' : 'products'} found
       </div>
@@ -79,19 +84,7 @@ function CategoryPage() {
   );
 }
 
-// Format API category names for display (convert "womens-dresses" to "Women's Dresses")
-function formatApiCategoryName(name) {
-  if (!name) return '';
-  
-  return name
-    .split('-')
-    .map(word => {
-      // Handle possessives
-      if (word === 'womens') return "Women's";
-      if (word === 'mens') return "Men's";
-      return word.charAt(0).toUpperCase() + word.slice(1);
-    })
-    .join(' ');
-}
+
+
 
 export { CategoryPage }

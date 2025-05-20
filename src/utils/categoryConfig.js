@@ -26,38 +26,14 @@ const categoryConfig = {
         }
     },
 
-    getApiCategories(metaCategorySlug) {
-        return this.metaCategories[metaCategorySlug]?.apiCategories || [];
+    getApiCategories(metaCategory) {
+        return this.metaCategories[metaCategory]?.apiCategories || [];
     },
 
-    // Get display name for a meta-category
-    getDisplayName(metaCategorySlug) {
-        return this.metaCategories[metaCategorySlug]?.displayName || 
-        metaCategorySlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    getDisplayName(metaCategory) {
+        return this.metaCategories[metaCategory]?.displayName || 
+        metaCategory.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     },
-    
-    // Check if a meta-category exists
-    isValidMetaCategory(metaCategorySlug) {
-        return Object.keys(this.metaCategories).includes(metaCategorySlug);
-    },
-    
-    // Find which meta-category an API category belongs to
-    findMetaCategory(apiCategory) {
-        for (const [metaCategory, data] of Object.entries(this.metaCategories)) {
-        if (data.apiCategories.includes(apiCategory)) {
-            return metaCategory;
-        }
-        }
-        return null;
-    },
-    
-    // Get all meta-categories
-    getAllMetaCategories() {
-        return Object.keys(this.metaCategories).map(slug => ({
-        slug,
-        displayName: this.getDisplayName(slug)
-        }));
-    }
-};
+}
 
 export { categoryConfig }
