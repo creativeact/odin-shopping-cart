@@ -10,6 +10,8 @@ function CategoryPage() {
   const { categoryName } = useParams();
   const [activeSubCategory, setActiveSubCategory] = useState('all');
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Reset active subcategory to all when user clicks on new category page
@@ -18,28 +20,77 @@ function CategoryPage() {
 
   useEffect(() => {
     async function loadProducts() {
+      setLoading(true);
+      setError(null)
       try {
         const result = await fetchProductsByMetacategory(categoryName);
         setProducts(result);
       } catch (error) {
         console.error('Failed to load products', error);
+        setError('Failed to load products. Please try again.')
+      } finally {
+        setLoading(false);
       }
     }
     loadProducts();
   }, [categoryName])
 
-  if (!products) {
-    return <div className={styles.loading}>Loading products...</div>;
-  }
-
   const displayName = categoryConfig.getDisplayName(categoryName);
   const subCategories = categoryConfig.getApiCategories(categoryName);
+
+  if (loading) {
+    return (
+      <div className={styles.categoryPage}>
+        <h1>{displayName}</h1>
+        
+        <div className={styles.subCategories}>
+          <div
+            className={`${styles.subCategoryTile} ${activeSubCategory === 'all' ? styles.active : ''}`}
+            onClick={() => setActiveSubCategory('all')}
+          >
+            All
+          </div>
+          {subCategories.map(subCategory => (
+            <div
+              key={subCategory}
+              className={`${styles.subCategoryTile} ${activeSubCategory === subCategory ? styles.active : ''}`}
+              onClick={() => handleSubCategoryClick(subCategory)}
+            >
+              {formatApiCategoryName(subCategory)}
+            </div>
+          ))}
+        </div>
+        <div className={styles.productsGrid}>
+          <div className={styles.loadingCard} role='status'>
+            <div className={styles.loadingImage}></div>
+            <div className={styles.loadingDetails}></div>
+          </div>
+          <div className={styles.loadingCard} role='status'>
+            <div className={styles.loadingImage}></div>
+            <div className={styles.loadingDetails}></div>
+          </div>
+          <div className={styles.loadingCard} role='status'>
+            <div className={styles.loadingImage}></div>
+            <div className={styles.loadingDetails}></div>
+          </div>
+          <div className={styles.loadingCard} role='status'>
+            <div className={styles.loadingImage}></div>
+            <div className={styles.loadingDetails}></div>
+          </div>
+        </div>
+      </div>
+
+    );
+  }
+
+  if (error) {
+    return <div className={styles.error}>{error}</div>
+  }
 
   const filteredProducts =
     activeSubCategory === 'all'
       ? products
       : products.filter(product => product.category === activeSubCategory)
-      console.log('Filtered Products', filteredProducts);
 
   const handleSubCategoryClick = (category) => {
     setActiveSubCategory(category === activeSubCategory ? 'all' : category);

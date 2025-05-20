@@ -12,7 +12,6 @@ function Home() {
         async function loadFeaturedProducts() {
             try {
                 const promises = featuredProductIds.map(id => fetchProduct(id));
-                console.log('Promises', promises);
                 const products = await Promise.all(promises);
                 setFeaturedProducts(products.flat());
             } catch(error) {
