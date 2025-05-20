@@ -1,24 +1,33 @@
 import styles from './Home.module.css';
+import { fetchProduct } from '../../utils/fetchProduct.js';
 import { Carousel } from '../../components/Carousel/Carousel.jsx';
-import { ProductContext } from '../../context/ProductContext.jsx'
+import { useState, useEffect } from 'react';
 
-/* const DealsCarousel = () => {
-    const products = useContext(ProductContext);
-
-    const featuredDeals = products.slice(82,85);
-
-    return (
-        <Carousel products={featuredDeals} />
-
-    )
-}; */
+const featuredProductIds = [83, 84, 85, 86, 87]
 
 function Home() {
+    const [featuredProducts, setFeaturedProducts] = useState([])
+    
+    useEffect(() => {
+        async function loadFeaturedProducts() {
+            try {
+                const promises = featuredProductIds.map(id => fetchProduct(id));
+                console.log('Promises', promises);
+                const products = await Promise.all(promises);
+                setFeaturedProducts(products.flat());
+            } catch(error) {
+                console.error('Error fetching featured products', error);
+                throw error;
+            }
+        }
+        loadFeaturedProducts();
+    }, [])
+
     return (
         <>
             <div className={styles.deals}>
                 <h2 className={styles.sectionHeader}>Today's Deals</h2>
-                {/* <DealsCarousel /> */}
+                <Carousel products={featuredProducts} />
             </div>
         </>
     );

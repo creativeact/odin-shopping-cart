@@ -5,6 +5,7 @@ import { formatMoney } from '../../utils/formatMoney';
 import styles from './Carousel.module.css';
 
 function Carousel({ products }) {
+    console.log('Products received by carousel', products);
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToSlide = (index) => {
@@ -23,7 +24,8 @@ function Carousel({ products }) {
         );
     };
 
-    const currentProduct = products[currentIndex];
+    const currentProduct = products?.[currentIndex];
+    if (!currentProduct) return <p>Loading...</p>;
 
     return (
         <div className={styles.carousel}>
@@ -35,7 +37,7 @@ function Carousel({ products }) {
                     </svg>
                 </button>
                 <div className={styles.slide}>
-                    <Link className={styles.link} to={`/product/${slugify(currentProduct.title)}`}>
+                    <Link className={styles.link} to={`/product/${slugify(currentProduct.title)}-${currentProduct.id}}`}>
                         <div className={styles.imageContainer}>
                             <img
                             src={currentProduct.images[0]}

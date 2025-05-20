@@ -8,7 +8,7 @@ async function fetchProductsByMetacategory(metaCategory) {
         const products = await Promise.all(promises);
         return products.flat(); // Consolidate all category arrays into one product array
     } catch (error) {
-        console.error('Error fetching producxts by meta category', error);
+        console.error('Error fetching products by meta category', error);
         throw error;
     }
 }
