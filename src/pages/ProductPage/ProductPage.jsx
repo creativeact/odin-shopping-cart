@@ -1,19 +1,37 @@
 import { useParams } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../../context/CartContext.jsx';
 import { ToastContext } from '../../context/ToastContext.jsx';
-import { ProductContext } from '../../context/ProductContext.jsx';
-import { slugify } from '../../utils/slugify.js';
+import { fetchProduct } from '../../utils/fetchProduct.js';
 import { StarRating } from '../../components/StarRating/StarRating.jsx';
 import { CircleUserRound } from 'lucide-react';
 import { formatMoney } from '../../utils/formatMoney.js';
 import styles from './ProductPage.module.css';
 
 function ProductPage() {
-    const { productTitle } = useParams();
+    const { slugAndProductId } = useParams();
+    const productId = slugAndProductId.split('-').pop();
+
     const { addToCart } = useContext(CartContext);
     const { addToast } = useContext(ToastContext);
     const [quantity, setQuantity] = useState(1);
+    const [product, setProduct] = useState('');
+
+    useEffect(() => {
+        async function loadProduct() {
+            try {
+                const result = await fetchProduct(productId);
+                setProduct(result);
+            } catch (error) {
+                console.error('Failed to load product', error);
+            }
+        }
+        loadProduct();
+    }, [productId])
+
+    if (!product) {
+        return <p>Product not found.</p>;
+    }
 
     const handleIncrease = () => setQuantity(prev => prev + 1);
 
@@ -21,13 +39,6 @@ function ProductPage() {
         setQuantity(prev => (prev > 1 ? prev - 1 : 1));
     };
     
-    const products = useContext(ProductContext);
-    const product = products.find(targetProduct => slugify(targetProduct.title) === productTitle);
-
-    if (!product) {
-        return <p>Product not found.</p>;
-    }
-
     return (
         <div className={styles.productContainer}>
             <div className={styles.imageContainer}>

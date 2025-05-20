@@ -12,6 +12,11 @@ function CategoryPage() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    // Reset active subcategory to all when user clicks on new category page
+    setActiveSubCategory('all');
+  }, [categoryName]);
+
+  useEffect(() => {
     async function loadProducts() {
       try {
         const result = await fetchProductsByMetacategory(categoryName);
@@ -23,17 +28,12 @@ function CategoryPage() {
     loadProducts();
   }, [categoryName])
 
-  const displayName = categoryConfig.getDisplayName(categoryName);
-  const subCategories = categoryConfig.getApiCategories(categoryName);
-
-  useEffect(() => {
-    // Reset active subcategory to all when user clicks on new category page
-    setActiveSubCategory('all');
-  }, [categoryName]);
-
   if (!products) {
     return <div className={styles.loading}>Loading products...</div>;
   }
+
+  const displayName = categoryConfig.getDisplayName(categoryName);
+  const subCategories = categoryConfig.getApiCategories(categoryName);
 
   const filteredProducts =
     activeSubCategory === 'all'

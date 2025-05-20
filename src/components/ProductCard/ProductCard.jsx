@@ -6,7 +6,7 @@ function ProductCard({ product }) {
     const slug = slugify(product.title || product.name);
 
     return (
-        <Link to={`/product/${slug}`} className={styles.link}>
+        <Link to={`/product/${slug}-${product.id}`} className={styles.link}>
             <div className={styles.productCard}>
                 <img
                     src={product.thumbnail}

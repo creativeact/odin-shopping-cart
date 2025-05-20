@@ -22,7 +22,7 @@ const routes = [
         element: <CategoryPage />,
       },
       {
-        path: 'product/:productTitle',
+        path: 'product/:slugAndProductId',
         element: <ProductPage />,
       }
     ],
