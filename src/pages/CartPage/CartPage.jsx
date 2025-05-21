@@ -4,9 +4,11 @@ import styles from './CartPage.module.css';
 import { CartContext } from '../../context/CartContext.jsx';
 import { displayTotalPrice } from '../../utils/displayTotalPrice.js';
 import { formatMoney } from '../../utils/formatMoney.js';
+import { useToast } from '../../utils/useToast.js';
 
 function CartPage() {
     const { items, itemCount, totalPrice, removeFromCart, updateQuantity } = useContext(CartContext);
+    const { checkoutSuccess } = useToast();
 
     const handleDecrease = (productId, currentQuantity) => {
         if (currentQuantity === 1) return
@@ -16,6 +18,10 @@ function CartPage() {
     const handleIncrease = (productId, currentQuantity) => {
         updateQuantity(productId, currentQuantity + 1);
     };
+
+    const handleCheckOut = () => {
+        checkoutSuccess();
+    }
 
     return (
         <div className={styles.pageContainer}>
@@ -57,7 +63,7 @@ function CartPage() {
                         ))}
                         <p className={styles.subTotal}>{`Subtotal (${itemCount} Items)`} ${formatMoney(totalPrice)}</p>
                     </div>
-                     <button className={styles.checkout}>
+                     <button onClick={() => handleCheckOut()} className={styles.checkout}>
                      Proceed to Checkout
                     </button>
                 </>

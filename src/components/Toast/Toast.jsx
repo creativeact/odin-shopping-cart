@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styles from './Toast.module.css'
 
-function Toast({ product, quantity, onDismiss, autoClose = 2000 }) {
+function Toast({ message, image = null, onDismiss, autoClose = 2000 }) {
     const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
@@ -24,11 +24,9 @@ function Toast({ product, quantity, onDismiss, autoClose = 2000 }) {
 
     return(
         <div className={`${styles.toastNotificationContainer} ${isVisible ? styles.visible : styles.hidden}`}>
-            <img src={product.thumbnail} alt={product.title} className={styles.productImage} />
+            {image && <img src={image} alt="toast icon" className={styles.productImage} />}
             <p className={styles.toastMessage}>
-                {quantity > 1 ?
-                `${product.title} x ${quantity} added to cart` :
-                `${product.title} added to cart`}
+                {message}
             </p>
             <button onClick={onDismiss} className={styles.dismissButton} >X</button>
         </div>

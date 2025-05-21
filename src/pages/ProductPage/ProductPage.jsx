@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../../context/CartContext.jsx';
-import { ToastContext } from '../../context/ToastContext.jsx';
+import { useToast } from '../../utils/useToast.js';
 import { fetchProduct } from '../../utils/fetchProduct.js';
 import { StarRating } from '../../components/StarRating/StarRating.jsx';
 import { CircleUserRound } from 'lucide-react';
@@ -12,7 +12,7 @@ function ProductPage() {
     const { slugAndProductId } = useParams();
     const productId = slugAndProductId.split('-').pop();
     const { addToCart } = useContext(CartContext);
-    const { addToast } = useContext(ToastContext);
+    const { productAdded } = useToast();
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState('');
     const [loading, setLoading] = useState(true);
@@ -92,8 +92,7 @@ function ProductPage() {
             
                         <button onClick={() => {
                             addToCart(product, quantity);
-                            addToast(product, quantity);
-                            console.log('Product Quantity', product.quantity)
+                            productAdded(product, quantity);
                             }}
                             className={styles.addToCartButton}
                             >

@@ -9,10 +9,9 @@ const ToastContext = createContext({
 const ToastProvider = ({ children }) => {
     const [toasts, setToasts] = useState([]);
 
-    const addToast = (product, quantity) => {
+    const addToast = (toast) => {
         setToasts(prev => [
-            ...prev, 
-            {product, quantity}
+            ...prev, toast
         ]);
     };
 

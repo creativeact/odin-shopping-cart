@@ -10,8 +10,8 @@ function ToastManager() {
             {toasts.map((toast, index) => (
                 <Toast 
                     key={index}
-                    product={toast.product}
-                    quantity={toast.quantity}
+                    message={toast.message}
+                    image={toast.image}
                     onDismiss={() => removeToast(index)}
                     autoClose={2000}
                 />
