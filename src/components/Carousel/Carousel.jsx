@@ -11,7 +11,7 @@ function Carousel({ products }) {
     const goToSlide = (index) => {
         setCurrentIndex(index);
     };
-/* 
+
     const nextSlide = () => {
         setCurrentIndex((prevIndex) =>
             prevIndex === products.length - 1 ? 0 : prevIndex + 1
@@ -24,14 +24,14 @@ function Carousel({ products }) {
         );
     };
 
-    const currentProduct = products?.[currentIndex]; */
+    const currentProduct = products?.[currentIndex];
 
     return (
         <div className={styles.carousel}>
-           {/*      <button onClick={prevSlide} className={`${styles.arrow} ${styles.left}`}>
-                    <ChevronLeft />
-                </button>
- */}
+            <button onClick={prevSlide} className={`${styles.slideButton} ${styles.left}`}>
+                    <ChevronLeft className={styles.arrow} />
+            </button>
+
                 {products.map((product, index) => 
                     <div className={`${styles.slideWrapper} ${index === currentIndex ? styles.active: ''}`}>
                         <div className={styles.slide}>
@@ -60,9 +60,9 @@ function Carousel({ products }) {
                     </div>
                 )}
     
-               {/*  <button onClick={nextSlide} className={`${styles.arrow} ${styles.right}`}>
-                    <ChevronRight />
-                </button> */}
+               <button onClick={nextSlide} className={`${styles.slideButton} ${styles.right}`}>
+                    <ChevronRight className={styles.arrow} />
+                </button>
 
             <div className={styles.indicators}>
                 {products.map((_, index) => (

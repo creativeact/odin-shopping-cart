@@ -17,7 +17,6 @@
   width: 100%;
   background-color: white;
   position: absolute;
-  border: 1px solid red;
 }
 
 .slide {
@@ -26,7 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
   padding-bottom: 1rem;
   opacity: 0;
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
@@ -102,28 +101,30 @@
   cursor: pointer;
 }
 
-.arrow {
-  height: 100%;
-  z-index: 2;
-  background-color: var(--button-color);
-  border: none;
-  font-size: 2rem;
-  color: white;
-  padding: 0.5rem;
+.slideButton {
+  all: unset;
   position: absolute;
+  padding: 1rem;
+  z-index: 3;
+  font-size: 2rem;
 }
 
-.arrow:hover {
+.arrow {
+  stroke: black;
+  height: 50px;
+  width: 50px;
+}
+
+.slideButton:hover {
   cursor: pointer;
-  background-color: var(--button-hover-color);
 }
 
 .left {
-  left: 0;
+  left: 10px;
 }
 
 .right {
-  right: 0;
+  right: 10px;
 }
 
 
