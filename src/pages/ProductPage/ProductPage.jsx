@@ -11,33 +11,52 @@ import styles from './ProductPage.module.css';
 function ProductPage() {
     const { slugAndProductId } = useParams();
     const productId = slugAndProductId.split('-').pop();
-
     const { addToCart } = useContext(CartContext);
     const { addToast } = useContext(ToastContext);
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function loadProduct() {
+            setLoading(true);
+            setError(null);
             try {
                 const result = await fetchProduct(productId);
                 setProduct(result);
             } catch (error) {
                 console.error('Failed to load product', error);
+                setError('Failed to load product. Please try again.');
+            }
+            finally {
+                setLoading(false);
             }
         }
         loadProduct();
     }, [productId])
-
-    if (!product) {
-        return <p>Product not found.</p>;
-    }
 
     const handleIncrease = () => setQuantity(prev => prev + 1);
 
     const handleDecrease = () => {
         setQuantity(prev => (prev > 1 ? prev - 1 : 1));
     };
+
+    if (loading) {
+        return (
+            <div className={styles.pageContainer}>
+                <div className={styles.productContainer}>
+                    <div className={styles.loadingImage} role='status'></div>
+                    <div className={styles.loadingProductDetails} role='status'></div>
+                </div>
+            </div>
+
+        )
+    }
+
+    if (error) {
+        return <div className={styles.error}>{error}</div>
+    }
     
     return (
         <div className={styles.pageContainer}>

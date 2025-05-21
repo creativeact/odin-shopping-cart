@@ -54,15 +54,6 @@
 }
 
 /* Loading Product Cards */
-@keyframes placeHolderShimmer{
-    0%{
-        background-position: -468px 0
-    }
-    100%{
-        background-position: 468px 0
-    }
-}
-
 .loadingCard {
     height: 275px;
     border: solid 1px var(--border-color);
@@ -94,6 +85,15 @@
 .error {
   text-align: center;
   font-size: 1.25rem;
+}
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
 }
 
 @media (max-width: 768px) {

@@ -11,7 +11,7 @@ function Carousel({ products }) {
     const goToSlide = (index) => {
         setCurrentIndex(index);
     };
-
+/* 
     const nextSlide = () => {
         setCurrentIndex((prevIndex) =>
             prevIndex === products.length - 1 ? 0 : prevIndex + 1
@@ -24,8 +24,7 @@ function Carousel({ products }) {
         );
     };
 
-    const currentProduct = products?.[currentIndex];
-    if (!currentProduct) return <p>Loading...</p>;
+    const currentProduct = products?.[currentIndex]; */
 
     return (
         <div className={styles.carousel}>
