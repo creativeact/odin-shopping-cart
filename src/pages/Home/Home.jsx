@@ -24,8 +24,7 @@ function Home() {
 
     return (
         <>
-            <div className={styles.deals}>
-                <h2 className={styles.sectionHeader}>Today's Deals</h2>
+            <div className={styles.container}>
                 <Carousel products={featuredProducts} />
             </div>
         </>
