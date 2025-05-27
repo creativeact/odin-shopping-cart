@@ -94,11 +94,13 @@
 .link, .link:visited {
   color: white;
   text-decoration: none;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .link:hover {
   background-color: var(--button-hover-color);
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 .slideButton {
@@ -119,6 +121,11 @@
   cursor: pointer;
 }
 
+.slideButton:focus-visible {
+  background-color: lightgray;
+  border: var(--border-color);
+}
+
 .left {
   left: 10px;
 }
@@ -126,7 +133,6 @@
 .right {
   right: 10px;
 }
-
 
 .indicators {
   position: absolute;

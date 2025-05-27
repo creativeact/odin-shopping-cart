@@ -1,6 +1,6 @@
 // Format API category names for display (convert "womens-dresses" to "Women's Dresses")
 
-function formatApiCategoryName(name) {
+function formatSubcategoryName(name) {
   if (!name) return '';
   
   return name
@@ -13,4 +13,4 @@ function formatApiCategoryName(name) {
     .join(' ');
 }
 
-export { formatApiCategoryName }
+export { formatSubcategoryName }

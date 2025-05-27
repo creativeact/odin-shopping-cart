@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import styles from './CategoryPage.module.css';
 import { fetchProductsByMetacategory } from '../../utils/fetchProductsByMetacategory.js';
 import { categoryConfig } from '../../utils/categoryConfig.js';
-import { formatApiCategoryName } from '../../utils/formatSubcategoryName.js';
+import { formatSubcategoryName } from '../../utils/formatSubcategoryName.js';
 import { ProductCard } from '../../components/ProductCard/ProductCard.jsx';
  
 function CategoryPage() {
@@ -45,6 +45,7 @@ function CategoryPage() {
         
         <div className={styles.subCategories}>
           <div
+            role='button'
             className={`${styles.subCategoryTile} ${activeSubCategory === 'all' ? styles.active : ''}`}
             onClick={() => setActiveSubCategory('all')}
           >
@@ -52,11 +53,12 @@ function CategoryPage() {
           </div>
           {subCategories.map(subCategory => (
             <div
+              role='button'
               key={subCategory}
               className={`${styles.subCategoryTile} ${activeSubCategory === subCategory ? styles.active : ''}`}
               onClick={() => handleSubCategoryClick(subCategory)}
             >
-              {formatApiCategoryName(subCategory)}
+              {formatSubcategoryName(subCategory)}
             </div>
           ))}
         </div>
@@ -84,7 +86,7 @@ function CategoryPage() {
   }
 
   if (error) {
-    return <div className={styles.error}>{error}</div>
+    return <p className={styles.error}>{error}</p>
   }
 
   const filteredProducts =
@@ -101,7 +103,8 @@ function CategoryPage() {
       <h1>{displayName}</h1>
       
       <div className={styles.subCategories}>
-        <div 
+        <div
+          role='button' 
           className={`${styles.subCategoryTile} ${activeSubCategory === 'all' ? styles.active : ''}`}
           onClick={() => setActiveSubCategory('all')}
         >
@@ -109,11 +112,12 @@ function CategoryPage() {
         </div>
         {subCategories.map(subCategory => (
           <div 
+            role='button'
             key={subCategory} 
             className={`${styles.subCategoryTile} ${activeSubCategory === subCategory ? styles.active : ''}`}
             onClick={() => handleSubCategoryClick(subCategory)}
           >
-            {formatApiCategoryName(subCategory)}
+            {formatSubcategoryName(subCategory)}
           </div>
         ))}
       </div>

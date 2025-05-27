@@ -25,10 +25,10 @@ const productCategories = [
          <Cart />
        </nav>
        <nav className={styles.navBarSecondary}>
-         <ul className={styles.navBarSecondaryLinks}>
+         <ul className={styles.navBarLinks}>
             {productCategories.map((category, index) => (
             <li key={index}>
-               <Link className={`${styles.link} ${styles.secondaryLink}`} to={category.path}>
+               <Link className={styles.link} to={category.path}>
                   {category.name}
                </Link>
             </li>
