@@ -1,189 +1,192 @@
 .productContainer {
-    margin: 2rem 4rem;
-    display: grid;
-    grid-template-columns: 500px auto;
-    gap: 50px;
+  margin: 2rem 4rem;
+  display: grid;
+  grid-template-columns: 500px auto;
+  gap: 50px;
 }
 
 .imageContainer {
-    grid-column: 1 / 2;
-    border: 1px solid var(--border-color);
-    background-color: white;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    height: 500px;
+  grid-column: 1 / 2;
+  border: 1px solid var(--border-color);
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  height: 500px;
 }
 
 .productImage {
-    width: 100%;
-    object-fit: contain;
+  width: 100%;
+  object-fit: contain;
 }
 
 .productDetails {
-    grid-column: 2 / 3;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin: 0 1.5rem 0 1.5rem;
+  grid-column: 2 / 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0 1.5rem 0 1.5rem;
 }
 
 .productRating {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .priceAvailabilityContainer {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    gap: 2rem;
-    margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .productPrice {
-    font-size: 1.5rem;
-    font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .productAvailability {
-    font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .low {
-    color: red;
+  color: red;
 }
 
 .productDescription {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .addProductContainer {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .addToCartButton {
-    background-color: var(--button-color);
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    margin-top: auto;
-    transition: background-color 0.2s;
-    height: 40px;
-    min-width: 200px;
-    font-size: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-  
-.addToCartButton:hover {
-    background-color: var(--button-hover-color);
+  background-color: var(--button-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: auto;
+  transition: background-color 0.2s;
+  height: 40px;
+  min-width: 200px;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.quantitySelector, .quantityDisplay, .quantityButton {
-    font-size: 1.5rem;
+.addToCartButton:hover {
+  background-color: var(--button-hover-color);
+}
+
+.quantitySelector,
+.quantityDisplay,
+.quantityButton {
+  font-size: 1.5rem;
 }
 
 .quantitySelector {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 125px;
-    background-color: white;
-    border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 125px;
+  background-color: white;
+  border-radius: 4px;
 }
 
 .quantityButton {
-    width: 30px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--button-color);
-    border: none;
-    color: white;
-    border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 30px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--button-color);
+  border: none;
+  color: white;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .quantityButton:hover {
-    cursor: pointer;
-    background-color: var(--button-hover-color);
+  cursor: pointer;
+  background-color: var(--button-hover-color);
 }
 
 .reviewsHeader {
-    font-size: 1.5rem;
-    border-bottom: 2px solid var(--border-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+  font-size: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .reviewsContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .review {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.user, .comment {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+.user,
+.comment {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 /* Loading */
 .loadingImage {
-    background-color: white;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-name: placeHolderShimmer;
-    animation-timing-function: linear;
-    background: linear-gradient(to right, #f9f9f9 8%, #f0f0f0 18%, #f9f9f9 33%);
-    height: 500px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+  background-color: white;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: linear-gradient(to right, #f9f9f9 8%, #f0f0f0 18%, #f9f9f9 33%);
+  height: 500px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
 }
 
 .loadingProductDetails {
-    background-color: white;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
-    animation-name: placeHolderShimmer;
-    animation-timing-function: linear;
-    background: linear-gradient(to right, #f9f9f9 8%, #f0f0f0 18%, #f9f9f9 33%);
-    height: 700px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+  background-color: white;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: linear-gradient(to right, #f9f9f9 8%, #f0f0f0 18%, #f9f9f9 33%);
+  height: 700px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
 }
 
 .error {
-    text-align: center;
-    font-size: 1.25rem;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
-@keyframes placeHolderShimmer{
-    0%{
-        background-position: -468px 0
-    }
-    100%{
-        background-position: 468px 0
-    }
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
 }

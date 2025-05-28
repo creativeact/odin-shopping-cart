@@ -1,28 +1,28 @@
 :root {
-    --primary-color: rgb(34, 139, 140);  
-    --secondary-color: rgb(234, 243, 241);
-    --background-color: rgb(240, 242, 243);
-    --border-color: rgb(203, 201, 201);
-    --medium-text-color: rgb(102, 102, 102);
-    --button-color: rgb(34, 139, 140);
-    --button-hover-color: rgb(25, 96, 97);
-    --star-color: rgb(234, 180, 10);
-    --red: rgb(197, 49, 49);
-    --red-hover: rgb(167, 38, 38);
+  --primary-color: rgb(34, 139, 140);
+  --secondary-color: rgb(234, 243, 241);
+  --background-color: rgb(240, 242, 243);
+  --border-color: rgb(203, 201, 201);
+  --medium-text-color: rgb(102, 102, 102);
+  --button-color: rgb(34, 139, 140);
+  --button-hover-color: rgb(25, 96, 97);
+  --star-color: rgb(234, 180, 10);
+  --red: rgb(197, 49, 49);
+  --red-hover: rgb(167, 38, 38);
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Fredoka';
+  margin: 0;
+  padding: 0;
+  font-family: "Fredoka";
 }
 
 body {
-    background-color: var(--background-color);
+  background-color: var(--background-color);
 }
 
 ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

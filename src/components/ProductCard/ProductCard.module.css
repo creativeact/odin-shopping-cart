@@ -1,51 +1,52 @@
 .productCard {
-    display: flex;
-    flex-direction: column;
-    border: solid 1px var(--border-color);
-    border-radius: 8px;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px var(--border-color);
+  border-radius: 8px;
+  background-color: white;
 }
 
 .productCard:hover {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .productImage {
-    height: 200px;
-    object-fit: contain;
-    margin-bottom: 1rem;
-    border-radius: 4px;
+  height: 200px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 4px;
 }
 
 .productDetails {
-    background-color: var(--secondary-color);
-    padding: 1rem;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border: 1px solid var(--border-color);
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border: 1px solid var(--border-color);
 }
 
 .productPrice {
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin: 0.5rem 0 0.75rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0.75rem;
 }
 
 .productTitle {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    line-height: 1.3;
-    height: 2.6em;
-    font-weight: 500;
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+  height: 2.6em;
+  font-weight: 500;
 }
 
-.link, .link:visited {
-    text-decoration: none;
-    color: black;
+.link,
+.link:visited {
+  text-decoration: none;
+  color: black;
 }

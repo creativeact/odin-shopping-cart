@@ -1,12 +1,12 @@
-import { MainLayout } from './layouts/MainLayout.jsx';
-import { CartPage } from './pages/CartPage/CartPage.jsx';
-import { Home } from './pages/Home/Home.jsx';
-import { CategoryPage } from './pages/CategoryPage/CategoryPage.jsx';
-import { ProductPage } from './pages/ProductPage/ProductPage.jsx';
+import { MainLayout } from "./layouts/MainLayout.jsx";
+import { CartPage } from "./pages/CartPage/CartPage.jsx";
+import { Home } from "./pages/Home/Home.jsx";
+import { CategoryPage } from "./pages/CategoryPage/CategoryPage.jsx";
+import { ProductPage } from "./pages/ProductPage/ProductPage.jsx";
 
 const routes = [
   {
-    path: '/',
+    path: "/",
     element: <MainLayout />,
     children: [
       {
@@ -14,17 +14,17 @@ const routes = [
         element: <Home />,
       },
       {
-        path: 'cart',
+        path: "cart",
         element: <CartPage />,
       },
       {
-        path: 'category/:categoryName',
+        path: "category/:categoryName",
         element: <CategoryPage />,
       },
       {
-        path: 'product/:slugAndProductId',
+        path: "product/:slugAndProductId",
         element: <ProductPage />,
-      }
+      },
     ],
   },
 ];

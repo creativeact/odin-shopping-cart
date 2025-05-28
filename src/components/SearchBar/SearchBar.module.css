@@ -1,77 +1,81 @@
 .searchContainer {
-    display: flex;
-    align-items: center;
-    background-color: #f3f4f6;
-    border-radius: 9999px;
-    padding: 0 12px;
-    height: 40px;
-    min-width: 250px;
-    max-width: 600px;
-    flex-grow: 1;
-    transition: all 0.2s ease;
-    border: 2px solid transparent;
-    position: relative;
-  }
-  
-  .focused {
-    background-color: white;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-  }
-  
-  .searchIcon {
-    color: #6b7280;
-    margin-right: 8px;
-    min-width: 18px;
-  }
-  
-  .searchInput {
-    border: none;
-    background: none;
-    outline: none;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  background-color: #f3f4f6;
+  border-radius: 9999px;
+  padding: 0 12px;
+  height: 40px;
+  min-width: 250px;
+  max-width: 600px;
+  flex-grow: 1;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  position: relative;
+}
+
+.focused {
+  background-color: white;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.searchIcon {
+  color: #6b7280;
+  margin-right: 8px;
+  min-width: 18px;
+}
+
+.searchInput {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0;
+  width: 100%;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.searchInput::placeholder {
+  color: #9ca3af;
+}
+
+.clearButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  font-size: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.clearButton:hover {
+  background-color: #e5e7eb;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .searchContainer {
     width: 100%;
-    color: #1f2937;
-    font-size: 14px;
   }
-  
-  .searchInput::placeholder {
-    color: #9ca3af;
+}
+
+/* Optional: Animation for the clear button */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .clearButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #6b7280;
-    font-size: 18px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    transition: background-color 0.2s;
+  to {
+    opacity: 1;
   }
-  
-  .clearButton:hover {
-    background-color: #e5e7eb;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 640px) {
-    .searchContainer {
-      width: 100%;
-    }
-  }
-  
-  /* Optional: Animation for the clear button */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  
-  .clearButton {
-    animation: fadeIn 0.2s ease;
-  }
+}
+
+.clearButton {
+  animation: fadeIn 0.2s ease;
+}

@@ -1,8 +1,8 @@
-import { CartProvider } from './context/CartContext.jsx';
-import { ToastProvider } from './context/ToastContext.jsx';
-import { ToastManager } from './components/Toast/ToastManager.jsx';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import routes from './routes.jsx';
+import { CartProvider } from "./context/CartContext.jsx";
+import { ToastProvider } from "./context/ToastContext.jsx";
+import { ToastManager } from "./components/Toast/ToastManager.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import routes from "./routes.jsx";
 
 function App() {
   const router = createBrowserRouter(routes);
@@ -14,7 +14,7 @@ function App() {
         <RouterProvider router={router} />
       </CartProvider>
     </ToastProvider>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -28,7 +28,9 @@
   gap: 1rem;
   padding-bottom: 1rem;
   opacity: 0;
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition:
+    transform 0.5s ease-in-out,
+    opacity 0.5s ease-in-out;
   pointer-events: none;
   z-index: 1;
 }
@@ -45,7 +47,7 @@
   align-items: center;
   width: 100%;
 }
-  
+
 .image {
   height: 300px;
   width: auto;
@@ -91,10 +93,13 @@
   border-radius: 8px;
 }
 
-.link, .link:visited {
+.link,
+.link:visited {
   color: white;
   text-decoration: none;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 }
 
 .link:hover {

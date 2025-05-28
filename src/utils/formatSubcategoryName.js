@@ -1,16 +1,16 @@
 // Format API category names for display (convert "womens-dresses" to "Women's Dresses")
 
 function formatSubcategoryName(name) {
-  if (!name) return '';
-  
+  if (!name) return "";
+
   return name
-    .split('-')
-    .map(word => {
-      if (word === 'womens') return "Women's";
-      if (word === 'mens') return "Men's";
+    .split("-")
+    .map((word) => {
+      if (word === "womens") return "Women's";
+      if (word === "mens") return "Men's";
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
-    .join(' ');
+    .join(" ");
 }
 
-export { formatSubcategoryName }
+export { formatSubcategoryName };
