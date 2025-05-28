@@ -41,13 +41,13 @@ function CartPage() {
                                 </div>
                                 <div className={styles.quantitySelector}>
                                     {product.quantity === 1 ? (
-                                        <button className={styles.removeFromCartButton} onClick={() => removeFromCart(product.id)}>
+                                        <button className={styles.removeFromCartButton} onClick={() => removeFromCart(product.id)} aria-label='Remove Item'>
                                             <Trash color='white' height='20px' />
                                         </button>
                                     ) : (
                                         <button className={styles.quantityButton} onClick={() => handleDecrease(product.id, product.quantity)}>-</button>
                                     )}
-                                    <span className={styles.quantityDisplay}>
+                                    <span className={styles.quantityDisplay} aria-label='Quantity'>
                                         {product.quantity}
                                     </span>
                                     <button className={styles.quantityButton} onClick={() => handleIncrease(product.id, product.quantity)}>+</button>

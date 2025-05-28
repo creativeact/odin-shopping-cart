@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { slugify } from '../../utils/slugify.js';
 import { formatMoney } from '../../utils/formatMoney';
@@ -23,8 +23,6 @@ function Carousel({ products }) {
             prevIndex === 0 ? products.length - 1 : prevIndex - 1
         );
     };
-
-    const currentProduct = products?.[currentIndex];
 
     return (
         <div className={styles.carousel}>

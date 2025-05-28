@@ -25,6 +25,7 @@ function ProductPage() {
             try {
                 const result = await fetchProduct(productId);
                 setProduct(result);
+                console.log('Fetched product:', result);
             } catch (error) {
                 console.error('Failed to load product', error);
                 setError('Failed to load product. Please try again.');
@@ -84,7 +85,7 @@ function ProductPage() {
                     <div className={styles.addProductContainer}>
                         <div className={styles.quantitySelector}>
                             <button className={styles.quantityButton} onClick={handleDecrease}>-</button>
-                            <span className={styles.quantityDisplay}>
+                            <span className={styles.quantityDisplay} aria-label="Quantity">
                                 {quantity}
                             </span>
                             <button className={styles.quantityButton} onClick={handleIncrease}>+</button>
@@ -97,7 +98,7 @@ function ProductPage() {
                             className={styles.addToCartButton}
                             >
                             Add to Cart
-                            </button>
+                        </button>
                     </div>
                     <div className={styles.reviewsSection}>
                         <h3 className={styles.reviewsHeader}>Reviews</h3>

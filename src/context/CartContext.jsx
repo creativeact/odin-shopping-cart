@@ -53,8 +53,8 @@ const CartProvider = ({ children }) => {
     const updateQuantity = (productId, newQuantity) => {
         // Don't allow negative quantities
         if (newQuantity <= 0) {
-        removeFromCart(productId);
-        return;
+            removeFromCart(productId);
+            return;
         }
         
         setItems(prevItems => 
