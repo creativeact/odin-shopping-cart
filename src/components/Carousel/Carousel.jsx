@@ -35,7 +35,7 @@ function Carousel({ products }) {
 
       {products.map((product, index) => (
         <div
-          className={`${styles.slideWrapper} ${index === currentIndex ? styles.active : ""}`}
+          key={index} className={`${styles.slideWrapper} ${index === currentIndex ? styles.active : ""}`}
         >
           <div className={styles.slide}>
             <div className={styles.imageContainer}>
