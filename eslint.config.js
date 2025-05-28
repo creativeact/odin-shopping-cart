@@ -37,7 +37,7 @@ export default [
       vitest,
     },
     languageOptions: {
-      globals: vitest.environments.globals.globals,
+      globals: vitest.environments.globals,
     },
   },
 ]
