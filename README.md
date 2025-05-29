@@ -1,4 +1,4 @@
-Odin Project Submission: Shopping Cart
+#Odin Project Submission: Shopping Cart#
 
 This is my submission for shopping cart project as part of the [Odin Project](https://www.theodinproject.com/lessons/node-path-react-new-shopping-cart). 
 
