@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Cart } from "../Cart/Cart.jsx";
-import { SearchBar } from "../SearchBar/SearchBar.jsx";
+import { SearchBar } from "../Searchbar/SearchBar.jsx";
 import styles from "./NavBar.module.css";
 import Logo from "../../assets/BigOStore_Logo_White.png";
 
