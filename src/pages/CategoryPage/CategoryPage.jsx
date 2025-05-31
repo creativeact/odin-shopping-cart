@@ -44,22 +44,20 @@ function CategoryPage() {
         <h1>{displayName}</h1>
 
         <div className={styles.subCategories}>
-          <div
-            role="button"
+          <button
             className={`${styles.subCategoryTile} ${activeSubCategory === "all" ? styles.active : ""}`}
             onClick={() => setActiveSubCategory("all")}
           >
             All
-          </div>
+          </button>
           {subCategories.map((subCategory) => (
-            <div
-              role="button"
+            <button
               key={subCategory}
               className={`${styles.subCategoryTile} ${activeSubCategory === subCategory ? styles.active : ""}`}
               onClick={() => handleSubCategoryClick(subCategory)}
             >
               {formatSubcategoryName(subCategory)}
-            </div>
+            </button>
           ))}
         </div>
         <div className={styles.productsGrid}>
@@ -102,22 +100,20 @@ function CategoryPage() {
       <h1>{displayName}</h1>
 
       <div className={styles.subCategories}>
-        <div
-          role="button"
+        <button
           className={`${styles.subCategoryTile} ${activeSubCategory === "all" ? styles.active : ""}`}
           onClick={() => setActiveSubCategory("all")}
         >
           All
-        </div>
+        </button>
         {subCategories.map((subCategory) => (
-          <div
-            role="button"
+          <button
             key={subCategory}
             className={`${styles.subCategoryTile} ${activeSubCategory === subCategory ? styles.active : ""}`}
             onClick={() => handleSubCategoryClick(subCategory)}
           >
             {formatSubcategoryName(subCategory)}
-          </div>
+          </button>
         ))}
       </div>
 
