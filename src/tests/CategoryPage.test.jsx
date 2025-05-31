@@ -1,11 +1,17 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { CategoryPage } from "../pages/CategoryPage/CategoryPage.jsx";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 
-vi.mock("../utils/fetchProductsByMetacategory", () => ({
-  fetchProductsByMetacategory: vi.fn(),
+const mocks = vi.hoisted(() => {
+  return {
+    fetchProductsByMetacategory: vi.fn()
+  }
+})
+
+vi.mock("../utils/fetchProductsByMetacategory.js", () => ({
+  fetchProductsByMetacategory: mocks.fetchProductsByMetacategory
 }));
 
 vi.mock("react-router-dom", async () => {
@@ -23,15 +29,13 @@ vi.mock("../../utils/categoryConfig", () => ({
   },
 }));
 
-import { fetchProductsByMetacategory } from "../utils/fetchProductsByMetacategory.js";
-
 describe("CategoryPage", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
   it("displays loading cards initially", () => {
-    fetchProductsByMetacategory.mockResolvedValue([
+    mocks.fetchProductsByMetacategory.mockResolvedValue([
       { id: 1, category: "vehicle", name: "Car A" },
     ]);
     render(<CategoryPage />);
@@ -40,7 +44,7 @@ describe("CategoryPage", () => {
   });
 
   it("displays error message on fetch failure", async () => {
-    fetchProductsByMetacategory.mockRejectedValue(new Error("API error"));
+    mocks.fetchProductsByMetacategory.mockRejectedValue(new Error("API error"));
     render(<CategoryPage />);
     const errorMessage = await screen.findByText(
       "Failed to load products. Please try again.",
@@ -49,7 +53,7 @@ describe("CategoryPage", () => {
   });
 
   it("displays subcategory tiles and products", async () => {
-    fetchProductsByMetacategory.mockResolvedValue([
+    mocks.fetchProductsByMetacategory.mockResolvedValue([
       { id: 1, category: "vehicle", name: "Car A" },
       { id: 2, category: "motorcycle", name: "Motorbike B" },
     ]);
@@ -72,7 +76,7 @@ describe("CategoryPage", () => {
   });
 
   it("filters products when subcategory is clicked", async () => {
-    fetchProductsByMetacategory.mockResolvedValue([
+    mocks.fetchProductsByMetacategory.mockResolvedValue([
       { id: 1, category: "vehicle", name: "Car A" },
       { id: 2, category: "motorcycle", name: "Motorbike B" },
     ]);
@@ -101,7 +105,7 @@ describe("CategoryPage", () => {
   });
 
   it("correctly displays number of products", async () => {
-    fetchProductsByMetacategory.mockResolvedValue([
+    mocks.fetchProductsByMetacategory.mockResolvedValue([
       { id: 1, category: "vehicle", name: "Car A" },
       { id: 2, category: "motorcycle", name: "Motorbike B" },
     ]);
